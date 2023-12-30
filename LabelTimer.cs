@@ -24,7 +24,7 @@ public partial class LabelTimer : Label
 			new Notification("Oyun başlıyor").Notify();
 		}
 
-		if (time.minutes == 40)
+		if (time.seconds == 40)
 		{
 			new Notification("Stack zamanı!", "res://Audio/stack.mp3").Notify();
 		}
