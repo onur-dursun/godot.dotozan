@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cfyvk3fvgn60f"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_mpumh"]
+[ext_resource type="Script" path="res://Main.cs" id="1_tjtcx"]
 [ext_resource type="Script" path="res://ButtonPause.cs" id="2_1ij3k"]
 [ext_resource type="Texture2D" uid="uid://c3y26rhyuyygs" path="res://settings_icon.png" id="2_553ji"]
 [ext_resource type="Script" path="res://ButtonStart.cs" id="2_d1p2l"]
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mpumh")
+script = ExtResource("1_tjtcx")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -44,6 +44,7 @@ theme_override_constants/separation = 1
 [node name="StartButton" type="Button" parent="BoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "s"
 script = ExtResource("2_d1p2l")
 
@@ -61,7 +62,7 @@ icon = ExtResource("2_553ji")
 flat = false
 icon_alignment = 1
 expand_icon = true
-item_count = 3
+item_count = 4
 popup/item_0/text = "sound"
 popup/item_0/checkable = 1
 popup/item_0/checked = true
@@ -74,11 +75,16 @@ popup/item_2/text = "nc"
 popup/item_2/checkable = 1
 popup/item_2/checked = true
 popup/item_2/id = 2
+popup/item_3/text = "bounty"
+popup/item_3/checkable = 1
+popup/item_3/checked = true
+popup/item_3/id = 3
 script = ExtResource("3_d3qj4")
 
 [node name="CloseButton" type="Button" parent="BoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "x"
 script = ExtResource("2_q8kwd")
 

@@ -10,6 +10,6 @@ public partial class ButtonPause : Button
 
 	private new void ButtonPressed()
 	{
-		GetTree().Paused = !GetTree().Paused;
+		//TODO: Add lock and pause.
 	}
 }

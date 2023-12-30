@@ -1,9 +1,12 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public static class NotificationManager
 {
 	public static AudioStreamPlayer2D audioStreamPlayer;
+	
+	public static Queue<string> paths = new Queue<string>();
 }
 
 public interface NotificationStrategy
@@ -16,22 +19,23 @@ public class Notification : NotificationStrategy
 {
 	private string soundPath;
 	private string log;
+	private bool isAudioEnabled;
 
-	public Notification(string _log = "", string path = "")
+	public Notification(string log = "", string soundPath = "", bool isAudioEnabled = true)
 	{
-		soundPath = path;
-		log = _log;
+		this.soundPath = soundPath;
+		this.log = log;
+		this.isAudioEnabled = isAudioEnabled;
 	}
+
 
 	public void Notify()
 	{
-		if(!string.IsNullOrWhiteSpace(soundPath)){
-			NotificationManager.audioStreamPlayer.Stream = (AudioStream)GD.Load(soundPath);
-			NotificationManager.audioStreamPlayer.Play();
+		if(isAudioEnabled && Preferences.IsSoundEnabled && !string.IsNullOrWhiteSpace(soundPath)){
+			NotificationManager.paths.Enqueue(soundPath);
 		}
 		
-		LabelLog.instance.LogNotification(log + " - " + TimeManager.GetFormattedTime());
+		LabelLog.instance.LogNotification(log + " - " + TimeManager.GetFormattedTimeString());
 		LabelLog.instance.UpdateLogLabel();
-
 	}
 }

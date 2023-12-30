@@ -7,8 +7,13 @@ public partial class ButtonMenu : MenuButton
 	PopupMenu popupMenu;
 	public override void _Ready()
 	{
+		GD.Print("ButtonMenu");
 		popupMenu = GetPopup();
 		popupMenu.Connect("index_pressed", Callable.From<int>(PopupIdPressed));
+		popupMenu.SetItemChecked(0, Preferences.IsSoundEnabled);
+		popupMenu.SetItemChecked(1, Preferences.IsStackSoundEnabled);
+		popupMenu.SetItemChecked(2, Preferences.IsNCSoundEnabled);
+		popupMenu.SetItemChecked(3, Preferences.IsBountySoundEnabled);
 	}
 
 	private void PopupIdPressed(int index)
@@ -27,8 +32,14 @@ public partial class ButtonMenu : MenuButton
 			case 2:
 				Preferences.IsNCSoundEnabled = b;
 				break;
+			case 3:
+				Preferences.IsBountySoundEnabled = b;
+				break;
 			default:
 				return;
 		}
+
+		SaveManager.Save();
+
 	}
 }

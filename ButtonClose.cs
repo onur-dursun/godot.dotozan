@@ -11,6 +11,7 @@ public partial class ButtonClose : Button
 	private new void ButtonPressed()
 	{
 		GetTree().Quit();
+		GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
 	}
 }
 
